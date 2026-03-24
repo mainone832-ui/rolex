@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@plugin '../components/hero.ts';
+/* Note: You may need to change the path to fit your project structure */
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  :root {
+    --surface: #ffffff;
+    --surface-muted: #ffffff;
+    --surface-subtle: #ffffff;
+    --surface-strong: #ffffff;
+    --surface-glass: #ffffff;
+    --sidebar-surface: #f0f0f0;
+    --sidebar-surface-elevated: #f7f7f7;
+    --border: #d6d6d6;
+    --border-strong: #bfbfbf;
+    --text-main: #111111;
+    --text-muted: #4a4a4a;
+    --text-soft: #6b6b6b;
+    --accent: #1f2937;
+    --accent-strong: #111827;
+    --accent-soft: #e5e7eb;
+    --accent-soft-strong: #d1d5db;
+    --success: #1f8a53;
+    --warning: #b7791f;
+    --danger: #c74747;
+    --shadow-xs: none;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --ring-accent: 0 0 0 2px rgba(31, 41, 55, 0.18);
+  }
+
+  .dark {
+    --surface: #ffffff;
+    --surface-muted: #ffffff;
+    --surface-subtle: #ffffff;
+    --surface-strong: #ffffff;
+    --surface-glass: #ffffff;
+    --sidebar-surface: #06110c;
+    --sidebar-surface-elevated: #0a1811;
+    --border: rgba(174, 204, 188, 0.16);
+    --border-strong: rgba(174, 204, 188, 0.3);
+    --text-main: #e4efe7;
+    --text-muted: #a4b9ac;
+    --text-soft: #8fa499;
+    --accent: #7fdaa9;
+    --accent-strong: #4daf7a;
+    --accent-soft: rgba(127, 218, 169, 0.18);
+    --accent-soft-strong: rgba(127, 218, 169, 0.3);
+    --success: #34d399;
+    --warning: #e9b55d;
+    --danger: #f87171;
+  }
+
+  body {
+    @apply bg-(--surface) text-(--text-main) antialiased;
+    font-family: "Arial", "Helvetica", sans-serif;
+    background-image: none;
+    background-attachment: scroll;
+    transition: none;
+  }
+
+  * {
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    background: rgba(18, 59, 43, 0.2);
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-sm border border-(--border) bg-white;
+  }
+
+  .subtle-chip {
+    @apply rounded-sm bg-(--accent-soft) px-2 py-1 text-xs font-semibold text-(--text-main);
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-(--text-main);
+  }
+
+  .muted-text {
+    @apply text-sm text-(--text-muted);
+  }
+
+  .page-shell {
+    @apply min-h-screen bg-white text-(--text-main);
+  }
+
+  .page-frame {
+    @apply mx-auto flex min-h-screen max-w-[1720px] flex-col lg:flex-row;
+  }
+
+  .page-main {
+    @apply flex-1 px-4 pb-28 pt-4 sm:px-6 sm:pt-6 lg:px-10 lg:pb-10 lg:pt-8;
+  }
+
+  .metric-card {
+    @apply rounded-sm border border-(--border) bg-white p-3;
+  }
+
+  .soft-panel {
+    @apply rounded-sm border border-(--border) bg-(--surface-subtle);
+  }
+
+  .search-input {
+    @apply rounded-sm border border-(--border) bg-white;
+  }
+
+  .status-pill {
+    @apply inline-flex items-center gap-2 rounded-sm border px-2 py-0.5 text-xs font-semibold;
+  }
+
+  .status-pill-online {
+    @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.75),
+      0 0 0 1px rgba(16, 185, 129, 0.1);
+  }
+
+  .status-pill-offline {
+    @apply border-rose-200 bg-rose-50 text-rose-700;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.75),
+      0 0 0 1px rgba(244, 63, 94, 0.1);
+  }
+
+  .status-pill-idle {
+    @apply border-amber-200 bg-amber-50 text-amber-700;
+  }
+
+  .sidebar-shell {
+    @apply hidden border-r border-(--border) bg-(--sidebar-surface) lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[18.5rem] lg:flex-col;
+  }
+
+  .sidebar-inner {
+    @apply flex h-full flex-col px-4 py-5;
+  }
+
+  .sidebar-brand {
+    @apply mb-5 rounded-sm border border-(--border) bg-white p-3;
+  }
+
+  .sidebar-nav {
+    @apply flex flex-1 flex-col gap-2;
+  }
+
+  .sidebar-link {
+    @apply flex min-h-10 items-center gap-3 rounded-sm px-3 py-2 text-sm font-medium text-(--text-main);
+  }
+
+  .sidebar-link-active {
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+  }
+
+  .sidebar-link-icon {
+    @apply flex h-8 w-8 items-center justify-center rounded-sm bg-white text-(--text-muted);
+  }
+
+}
+
+@media (max-width: 1023px) {
+  .page-main {
+    padding-bottom: 2rem;
+  }
+}
